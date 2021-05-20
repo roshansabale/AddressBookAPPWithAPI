@@ -1,0 +1,187 @@
+    body {
+        margin: 0px
+    }
+    
+    .maincontainer {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        background-color: #63738a;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .signupcard {
+        width: 500px;
+        height: 625px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        justify-content: center;
+        box-shadow: 0px 2px 2px rgb(0 0 0 / 30%);
+    }
+    
+    .signup-form {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    
+    .formtitle {
+        color: #636363;
+        font-size: 2rem;
+        font: 32px Roboto, sans-serif;
+        font-weight: 500;
+    }
+    
+    .headercontent {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: -17px;
+    }
+    
+    p {
+        display: flex;
+        padding: 0px 0px 5px 0px;
+        justify-content: space-evenly;
+        color: #999999;
+        margin-top: 0px;
+        margin-bottom: 11px;
+        font: 15px Roboto, sans-serif;
+    }
+    
+    #backline {
+        display: flex;
+        height: 3px;
+        width: 30%;
+        background-color: #d4d4d4
+    }
+    
+    .row-content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 2px;
+        margin-left: -11px;
+        padding: 6px 12px;
+        margin-right: -27px;
+    }
+    
+    .input {
+        width: 40%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        font: 15px Arial, sans-serif;
+    }
+    
+    select {
+        width: 52%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        font: 15px Arial, sans-serif;
+        color: dimgray;
+    }
+    
+    .textarea {
+        width: 100%;
+        height: 18px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        font: 15px Arial, sans-serif;
+    }
+    
+    .phone {
+        width: 100%;
+    }
+    
+    .checkbox {
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+    }
+    
+    .btn {
+        width: 100%;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #28a745;
+    }
+    
+    .error-content {
+        display: flex;
+        margin-top: -23px;
+        padding: 2px 4px;
+    }
+    
+    .text-center {
+        padding: 6px 130px;
+        color: whitesmoke
+    }
+    
+    a {
+        color: whitesmoke
+    }
+    
+    error-output {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        font-size: 12px;
+        font-family: roboto;
+        font-style: italic;
+        font-weight: bold;
+        color: red;
+    }
+    
+    .loginsignupcard {
+        height: 270px;
+    }
+    /*     
+    .header-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border: 0px solid #63738a;
+    }
+    
+    .header {
+        padding: 15px 0;
+        background-color: #ffffff;
+        margin-left: 10px;
+    }
+    
+    .address-text {
+        font: normal normal bold 20px/25px Montserrat;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 0px;
+        color: #42515f;
+        text-transform: capitalize;
+    }
+    
+    .address-logo {
+        color: #42515f;
+    }
+    
+    .logo-content-img {
+        border: solid 0px #42515f;
+    }
+    
+    .logo-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 0px solid green;
+        width: 80%;
+    } */
