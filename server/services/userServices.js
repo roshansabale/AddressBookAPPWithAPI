@@ -48,7 +48,7 @@ exports.loginUser = (request, callback) => {
     let response = {};
     model.userModel.findOne({ "email": request.body.email }, (error, user) => {
         if (user) {
-            const validatePwd = bcrypt.compare(request.body.password, user.password, (error, encrypted) => {
+            bcrypt.compare(request.body.password, user.password, (error, encrypted) => {
                 if (!encrypted) {
                     response = { message: "Password not matched!!" };
                     callback(response);
@@ -113,8 +113,6 @@ exports.getContacts = (request, callback) => {
         if (error) {
             callback(error);
         } else {
-            // contacts.push(data);
-            // console.log(data[0].userId);
             callback(null, data);
         }
     });
@@ -124,7 +122,7 @@ exports.updateContact = (request, data, callback) => {
     let id = request.headers['userid'];
     console.log("Data:" + data.userID);
     console.log(id);
-    const d = model.personModel.findByIdAndUpdate(id, data)
+    model.personModel.findByIdAndUpdate(id, data)
         .then(updatedData => {
             callback(null, updatedData);
         })
@@ -133,16 +131,16 @@ exports.updateContact = (request, data, callback) => {
         })
 }
 
-exports.deleteContact = (request, response, callback) => {
-    let id = request.params.userEmail;
+exports.deleteContact = (request, callback) => {
+    let requestEmail = request.params.userEmail;
     try {
-        model.personModel.findOne({ email: id }, (error, contact) => {
+        model.personModel.findOne({ email: requestEmail }, (error, contact) => {
             if (!contact) {
                 let responseData = { Message: "Contact not found for provided email" };
                 callback(responseData);
             } else {
                 model.personModel.deleteOne({
-                        email: id
+                        email: requestEmail
                     })
                     .then(deletedContact => {
                         // response.send({ message: 'Contact Deleted Sucessfully! ' });

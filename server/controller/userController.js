@@ -99,14 +99,14 @@ exports.updateContact = (request, response) => {
         response.status(422).send(error);
     } else {
         let contactDetails = {
-            "name": request.body.name === null ? null : request.body.name,
-            "email": request.body.email === null ? null : request.body.email,
-            "phone": request.body.phone === null ? null : request.body.phone,
-            "address": request.body.address === null ? null : request.body.address,
-            "state": request.body.state === null ? null : request.body.state,
-            "city": request.body.city === null ? null : request.body.city,
-            "zipCode": request.body.zipCode === null ? null : request.body.zipCode,
-            "userId": request.body.userId === null ? null : request.body.userId
+            "name": request.body.name,
+            "email": request.body.email,
+            "phone": request.body.phone,
+            "address": request.body.address,
+            "state": request.body.state,
+            "city": request.body.city,
+            "zipCode": request.body.zipCode,
+            "userId": request.body.userId
         }
         userService.updateContact(request, contactDetails, (error, data) => {
             if (error) {
@@ -114,8 +114,7 @@ exports.updateContact = (request, response) => {
             } else {
                 console.log(contactDetails)
                 let dataReponse = {
-                    message: "Successfully Updated !!!",
-                    data: contactDetails
+                    message: "Successfully Updated !!!"
                 };
                 response.status(200).send(dataReponse);
             }
@@ -130,11 +129,11 @@ exports.deleteContact = (request, response) => {
     if (error) {
         response.status(422).send(error);
     } else {
-        userService.deleteContact(request, response, (error, data) => {
+        userService.deleteContact(request, (error, data) => {
             if (error) {
                 response.status(500).send(error);
             } else {
-                let responseData = { message: "Contact Deleted Sucessfully!!!" };
+                let responseData = { message: "Contact Deleted Sucessfully!!" };
                 response.status(200).send(responseData);
             }
         })
