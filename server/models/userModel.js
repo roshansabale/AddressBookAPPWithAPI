@@ -32,7 +32,7 @@ let userSchema = new Schema({
         required: [true, "City can not be empty"]
     },
     phone: {
-        type: Number,
+        type: String,
         required: [true, "Phone number can not be empty"]
     },
 
@@ -41,10 +41,10 @@ let userSchema = new Schema({
         required: [true, "ZipCode can not be empty"]
     },
     acceptStatus: {
-        type: Number,
+        type: String,
         required: [true, "Acceptance status can not be empty"]
     },
-}, { timeStamps: true });
+}, { timestamps: true });
 
 
 
@@ -83,7 +83,7 @@ let personSchema = new Schema({
         required: true,
         ref: 'users'
     },
-}, { timeStamps: true });
+}, { timestamps: true });
 
 //collections
 exports.userModel = mongoose.model("user", userSchema);
