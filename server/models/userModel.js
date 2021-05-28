@@ -74,7 +74,7 @@ let personSchema = new Schema({
         required: [true, "City can not be empty"]
     },
 
-    zipCode: {
+    zipcode: {
         type: String,
         required: [true, "ZipCode can not be empty"]
     },

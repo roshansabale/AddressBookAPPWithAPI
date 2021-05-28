@@ -19,7 +19,7 @@ class AddressBook {
 
     get password() { return this._password; }
     set password(password) {
-        let nameRegex = RegExp('^[a-zA-Z]{3,}$');
+        let nameRegex = RegExp('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/');
         if (nameRegex.test(password))
             this._password = password;
         else throw 'Password is incorrect!!'

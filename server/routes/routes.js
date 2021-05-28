@@ -8,11 +8,11 @@ router.post("/user/register", controller.addUser);
 // for login
 router.post("/user/login", controller.loginUser);
 
-router.post("/addContact", auth.checkToken, controller.addContact);
+router.post("/person/add", auth.checkToken, controller.addContact);
 
-router.get("/user/getAll", auth.checkToken, controller.getContacts);
+router.get("/person/getAll", auth.checkToken, controller.getContacts);
 
-router.post("/user/update", auth.checkToken, controller.updateContact);
+router.put("/person/update/:personId", auth.checkToken, controller.updateContact);
 
-router.delete("/remove/:userEmail", auth.checkToken, controller.deleteContact);
+router.delete("/person/remove/:userEmail", auth.checkToken, controller.deleteContact);
 module.exports = router;

@@ -90,7 +90,7 @@ exports.addContact = (request, callback) => {
                 "address": request.body.address,
                 "state": request.body.state,
                 "city": request.body.city,
-                "zipCode": request.body.zipCode,
+                "zipcode": request.body.zipcode,
                 "userId": request.body.userId
             })
             contactDetails.save()
@@ -119,7 +119,8 @@ exports.getContacts = (request, callback) => {
 }
 
 exports.updateContact = (request, data, callback) => {
-    let id = request.headers['userid'];
+    // let id = request.headers['userid'];
+    let id = request.params.personId;
     console.log("Data:" + data.userID);
     console.log(id);
     model.personModel.findByIdAndUpdate(id, data)

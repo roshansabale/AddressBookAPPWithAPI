@@ -57,7 +57,7 @@ exports.addContact = (request, response) => {
     request.checkBody("state", "State can not be empty").notEmpty().isAlpha();
     request.checkBody("city", "City can not be empty").notEmpty().isAlpha();
     request.checkBody("phone", "phone name can not be empty").notEmpty();
-    request.checkBody("zipCode", "zipCode can not be empty").notEmpty();
+    request.checkBody("zipcode", "zipCode can not be empty").notEmpty();
 
     const error = request.validationErrors();
 
@@ -95,6 +95,7 @@ exports.getContacts = (request, response) => {
 exports.updateContact = (request, response) => {
 
     const error = request.validationErrors();
+    console.log("From update controller" + JSON.stringify(request.body))
     if (error) {
         response.status(422).send(error);
     } else {
@@ -105,7 +106,7 @@ exports.updateContact = (request, response) => {
             "address": request.body.address,
             "state": request.body.state,
             "city": request.body.city,
-            "zipCode": request.body.zipCode,
+            "zipcode": request.body.zipcode,
             "userId": request.body.userId
         }
         userService.updateContact(request, contactDetails, (error, data) => {

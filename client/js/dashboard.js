@@ -1,26 +1,179 @@
-// window.addEventListener('DOMContentLoaded', (event) => {
-//     var modal = document.getElementById("myModal");
+let listOfPersons = {};
+let personObject = {};
+let personsList = {};
+let personid;
+window.addEventListener('DOMContentLoaded', (event) => {
+    getAllPersons();
+});
 
-//     // Get the button that opens the modal
-//     var btn = document.getElementById("myBtn");
+const addPerson = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    personObject.name = getInputValueById('#name');
+    personObject.address = getInputValueById('#address');
+    personObject.email = getInputValueById('#email');
+    personObject.phone = getInputValueById('#phone');
+    personObject.city = document.querySelector('#city').value;
+    personObject.zipcode = getInputValueById('#zipcode');
+    personObject.state = getInputValueById('#state');
+    personObject.userId = getuserIDFromStorage();
+    registerPerson();
+    alert(personObject);
+    window.location.replace(siteProperties.dashboard_Page);
+}
 
-//     // Get the <span> element that closes the modal
-//     var span = document.getElementsByClassName("close")[0];
+const editPerson = (event) => {
+    // event.preventDefault();
+    console.log("From edit person");
+    console.log("PersonID:" + personid);
 
-//     // When the user clicks the button, open the modal 
-//     btn.onclick = function() {
-//         modal.style.display = "block";
-//     }
+    let updatedPerson = {};
+    // let personid = getSelectedPersonId();
+    updatedPerson.name = getInputValueById('#editname');
+    updatedPerson.address = getInputValueById('#editaddress');
+    updatedPerson.email = getInputValueById('#editemail');
+    updatedPerson.phone = getInputValueById('#editphone');
+    updatedPerson.city = document.querySelector('#editcity').value;
+    updatedPerson.zipcode = getInputValueById('#editzipcode');
+    updatedPerson.state = getInputValueById('#editstate');
+    updatedPerson.userId = getuserIDFromStorage();
 
-//     // When the user clicks on <span> (x), close the modal
-//     span.onclick = function() {
-//         modal.style.display = "none";
-//     }
+    let postUrl = siteProperties.updatePerson_URL;
+    // let postUrl1 = "http://localhost:3000/add"
+    let methodcall = "PUT";
 
-//     // When the user clicks anywhere outside of the modal, close it
-//     window.onclick = function(event) {
-//         if (event.target == modal) {
-//             modal.style.display = "none";
-//         }
-//     }
-// });
+    postUrl = postUrl + personid;
+    console.log("UpdateURL:" + postUrl);
+    console.log("RegisterDataObject" + updatedPerson);
+    makeServiceCall(methodcall, postUrl, true, updatedPerson)
+        .then(responseText => {
+            alert(JSON.parse(responseText).message);
+            console.log("Response text:" + responseText);
+
+        })
+        .catch(error => {
+            throw error;
+        });
+
+
+}
+
+const getAllPersons = () => {
+    let url = siteProperties.getAllPerson_URL;
+    let methodCall = "GET";
+    let data = {};
+    makeServiceCall(methodCall, url, true)
+        .then((responseText) => {
+
+            console.log(responseText);
+            localStorage.setItem('listofpersons', responseText);
+            //  listOfPersons = responseText;
+            listOfPersons = JSON.parse(responseText);
+            personsList = JSON.parse(responseText);
+            createInnerHtml();
+        })
+        .catch((error) => {
+            throw error;
+        })
+}
+
+const createInnerHtml = () => {
+    let innerhtml;
+    listOfPersons.data.reverse();
+    //  persons.reverse();
+    console.log("Persons list :" + JSON.stringify(listOfPersons.data));
+
+    for (const personData of listOfPersons.data) {
+        let fetch = document.querySelector('#table-display').innerHTML;
+        // <div id="${personData._id}" onclick="myFunction(this)" class="card">
+        // <p><b>ID:</b> ${personData._id}</p>  //<p><b>Last Updated:</b> ${personData.updatedAt} </p>
+        innerhtml = ` 
+        <div class="card">
+        <p id="p_header"><b>ID:</b> ${personData._id}</p> 
+        <p><b>Hello</b> ${personData.name}</p>
+        <p><b>Email:</b> ${personData.email}</p>
+        <p><b>Phone:</b> ${personData.phone}</p>
+        <div class="buttonalign">
+        <div id="${personData._id}" onclick="myFunction(this)" >
+        <b><a data-toggle="modal" href="#editModal">Edit</a></b>
+        </div>
+        <div id="${personData.email}" onclick="myFunction1(this)" >
+        <b><a href="#">Delete</a></b>
+        </div>
+        </div>
+        </div>` + fetch;
+        document.querySelector('#table-display').innerHTML = innerhtml;
+    }
+}
+
+const registerPerson = () => {
+
+    let postUrl = siteProperties.addPerson_URL;
+    // let postUrl1 = "http://localhost:3000/add"
+    let methodcall = "POST";
+
+    console.log("RegisterDataObject" + personObject);
+    makeServiceCall(methodcall, postUrl, true, personObject)
+        .then(responseText => {
+            alert(JSON.parse(responseText).message);
+            console.log("Response text:" + responseText);
+        })
+        .catch(error => {
+            throw error;
+        });
+}
+
+const myFunction = (data) => {
+    alert("Id clicked!!" + data.id);
+    let persons = personsList.data;
+    console.log("Persons Data from myd=fucntion:" + JSON.stringify(personsList.data));
+
+
+    let bigCities = persons.find(function(e) {
+        return e._id == data.id;
+    });
+
+    console.log("UpdatedData from myfucntion" + "Finded person" + JSON.stringify(bigCities));
+    setForm(bigCities);
+    getSelectedPersonId(bigCities);
+}
+
+const setForm = (data) => {
+    console.log("Data from setformm " + JSON.stringify(data));
+    setValue('#editname', data.name);
+    setValue('#editaddress', data.address);
+    setValue('#editemail', data.email);
+    setValue('#editphone', data.phone);
+    setValue('#editcity', data.city);
+    setValue('#editzipcode', data.zipcode);
+    setValue('#editstate', data.state);
+    console.log(data.name)
+}
+
+const getSelectedPersonId = (data) => {
+    console.log(data.name);
+    personid = data._id;
+}
+
+const myFunction1 = (data) => {
+    alert("Id clicked!!" + data.id);
+    console.log("dataFrom myfunction1" + data.id)
+    deletePerson(data.id);
+}
+
+const deletePerson = (id) => {
+    let postUrl = siteProperties.deletePerson_URL;
+    let methodcall = "DELETE";
+    postUrl = postUrl + id;
+    console.log("UpdateURL:" + postUrl);
+
+    makeServiceCall(methodcall, postUrl, true)
+        .then(responseText => {
+            alert(JSON.parse(responseText).message);
+            console.log("Response text:" + responseText);
+            window.location.replace(siteProperties.dashboard_Page);
+        })
+        .catch(error => {
+            throw error;
+        });
+}

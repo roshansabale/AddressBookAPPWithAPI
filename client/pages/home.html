@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/home.css">
     <title>AddressBook</title>
-    <script src="../js/home.js"></script>
-    <script src="../model/AddressBook.js"></script>
+
 
 
 </head>
@@ -33,7 +32,7 @@
                 </div>
                 <p>Create your account. It's free and only takes a minute.</p>
 
-                <form class="form">
+                <form class="form" onsubmit="save(event)">
                     <div class="row-content">
                         <input class="input" type="text" id="firstname" name="firstname" placeholder="First Name" required>
                         <input class="input" type="text" id="lastname" name="lastname" placeholder="Last Name" required>
@@ -53,7 +52,7 @@
                         <input class="phone input" type="password" id="password" name="password" placeholder="Password" required>
                     </div>
                     <div class="error-content">
-                        <error-output class="text-error" for="password"></error-output>
+                        <error-output class="text-password" for="text"></error-output>
                     </div>
 
                     <div class="row-content">
@@ -61,25 +60,25 @@
                         <error-output class="text-error" for="text"></error-output>
                     </div>
                     <div class="row-content">
-                        <select class="select" id="City">
+                        <select class="select" id="city">
                             <option value="" selected>City</option>
-                            <option value="MH">Nashik</option>
-                            <option value="BG">Banglore</option>
-                            <option value="MU">Mumbai</option>
-                            <option value="PN">Pune</option>
+                            <option value="Nashik">Nashik</option>
+                            <option value="Banglore">Banglore</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Pune">Pune</option>
                         </select>
-                        <input class="input" type="text" id="name" name="name" placeholder="ZipCode" required>
+                        <input class="input" type="text" id="zipcode" name="zipcode" placeholder="ZipCode" required>
                         <error-output class="text-error" for="text"></error-output>
                     </div>
                     <div class="row-content">
-                        <input class="phone input" type="text" id="State" name="State" placeholder="State" required>
+                        <input class="phone input" type="text" id="state" name="state" placeholder="State" required>
                         <error-output class="text-error" for="text"></error-output>
                     </div>
                     <div class="row-content">
                         <input class="phone input" type="text" id="phone" name="phone" placeholder="Phone Number" required>
                     </div>
                     <div class="checkbox row-content">
-                        <input type="checkbox" id="condition" name="condition" required> I accept the terms and Conditions</input>
+                        <input type="checkbox" id="acceptStatus" name="condition" value="1" required> I accept the terms and Conditions</input>
                     </div>
                     <div class="row-content">
                         <button class="btn input" type="submit">Register Now</button>
@@ -92,5 +91,10 @@
     </div>
     </div>
 </body>
+<script src="../utility/siteProperties.js"></script>
+<script src="../utility/services.js"></script>
+<script src="../js/home.js"></script>
+<script src="../model/AddressBook.js"></script>
+
 
 </html>

@@ -21,7 +21,7 @@
                     <span id="backline"></span>
                 </div>
 
-                <form class="form">
+                <form class="form" onsubmit="login(event)">
 
                     <div class="row-content">
                         <input class="phone input" type="text" id="email" name="email" placeholder="Email" required>
@@ -37,7 +37,7 @@
                         <error-output class="text-error" for="password"></error-output>
                     </div>
                     <div class="row-content">
-                        <button class="btn input" type="submit">Register Now</button>
+                        <button class="btn input" type="submit">Login</button>
                     </div>
                 </form>
             </div>
@@ -47,5 +47,9 @@
     </div>
     </div>
 </body>
+<script src="../utility/siteProperties.js"></script>
+<script src="../utility/services.js"></script>
+<script src="../js/login.js"></script>
+<script src="../model/AddressBook.js"></script>
 
 </html>
