@@ -45,7 +45,7 @@
                         <input class="phone input" type="text" id="email" name="email" placeholder="Email" required>
                     </div>
                     <div class="error-content">
-                        <error-output class="text-error" for="email"></error-output>
+                        <error-output class="email-error" for="email"></error-output>
                     </div>
 
                     <div class="row-content">
@@ -56,8 +56,8 @@
                     </div>
 
                     <div class="row-content">
-                        <textarea class="textarea" row="2" id="address" name="name" placeholder="Address" required></textarea>
-                        <error-output class="text-error" for="text"></error-output>
+                        <textarea class="textarea" row="2" id="address" name="address" placeholder="Address" required></textarea>
+                        <error-output class="address-error" for="text"></error-output>
                     </div>
                     <div class="row-content">
                         <select class="select" id="city">
@@ -68,14 +68,15 @@
                             <option value="Pune">Pune</option>
                         </select>
                         <input class="input" type="text" id="zipcode" name="zipcode" placeholder="ZipCode" required>
-                        <error-output class="text-error" for="text"></error-output>
+                        <error-output class="zip-error" for="text"></error-output>
                     </div>
                     <div class="row-content">
                         <input class="phone input" type="text" id="state" name="state" placeholder="State" required>
-                        <error-output class="text-error" for="text"></error-output>
+                        <error-output class="state-error" for="text"></error-output>
                     </div>
                     <div class="row-content">
                         <input class="phone input" type="text" id="phone" name="phone" placeholder="Phone Number" required>
+                        <error-output class="phone-error" for="text"></error-output>
                     </div>
                     <div class="checkbox row-content">
                         <input type="checkbox" id="acceptStatus" name="condition" value="1" required> I accept the terms and Conditions</input>

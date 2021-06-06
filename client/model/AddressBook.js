@@ -19,7 +19,7 @@ class AddressBook {
 
     get password() { return this._password; }
     set password(password) {
-        let nameRegex = RegExp('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/');
+        let nameRegex = RegExp('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$');
         if (nameRegex.test(password))
             this._password = password;
         else throw 'Password is incorrect!!'
@@ -33,43 +33,43 @@ class AddressBook {
         else throw 'Email is incorrect!!'
     }
 
-    get address() { return this.address; }
+    get address() { return this._address; }
     set address(address) {
         let nameRegex = RegExp('^[a-zA-Z]{3,}$');
         if (nameRegex.test(address))
-            this.address = address;
+            this._address = address;
         else throw 'Address is incorrect!!'
     }
 
-    get state() { return this.state; }
+    get state() { return this._state; }
     set state(state) {
-        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{3,}$');
+        let nameRegex = RegExp('^[a-zA-Z]{3,}$');
         if (nameRegex.test(state))
-            this.state = state;
+            this._state = state;
         else throw 'State is incorrect!!'
     }
 
-    get city() { return this.city; }
+    get city() { return this._city; }
     set city(city) {
-        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{3,}$');
+        let nameRegex = RegExp('^[a-zA-Z]{3,}$');
         if (nameRegex.test(city))
-            this.city = city;
+            this._city = city;
         else throw 'State is incorrect!!'
     }
 
-    get zipcode() { return this.zipcode; }
+    get zipcode() { return this._zipcode; }
     set zipcode(zipcode) {
         let nameRegex = RegExp('^[0-9]{3}[ ]?[0-9]{3}$');
         if (nameRegex.test(zipcode))
-            this.zipcode = zipcode;
+            this._zipcode = zipcode;
         else throw 'zipcode is incorrect!!'
     }
 
-    get phone() { return this.phone; }
+    get phone() { return this._phone; }
     set phone(phone) {
-        let nameRegex = RegExp("[91]{2}\\s[789]{1}[0-9]{9}$");
+        let nameRegex = RegExp("[789]{1}[0-9]{9}$");
         if (nameRegex.test(phone))
-            this.phone = phone;
+            this._phone = phone;
         else throw 'phone is incorrect!!'
     }
 

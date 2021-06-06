@@ -35,19 +35,101 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
 
     const password = document.querySelector('#password');
+    const passwordError = document.querySelector('.text-password');
     password.addEventListener('input', function() {
         try {
             if (password.value.length == 0) {
-                textError.textContent = "";
+                passwordError.textContent = "";
                 return;
             }
             console.log(password.value);
             (new AddressBook()).password = password.value;
-            textError.textContent = "";
+            passwordError.textContent = "";
         } catch (e) {
-            textError.textContent = e;
+            passwordError.textContent = e;
         }
     });
+
+    const email = document.querySelector('#email');
+    const emailError = document.querySelector('.email-error');
+    email.addEventListener('input', function() {
+        try {
+            if (email.value.length == 0) {
+                emailError.textContent = "";
+                return;
+            }
+            console.log(email.value);
+            (new AddressBook()).email = email.value;
+            emailError.textContent = "";
+        } catch (e) {
+            emailError.textContent = e;
+        }
+    });
+
+    const address = document.querySelector('#address');
+    const addressError = document.querySelector('.address-error');
+    address.addEventListener('input', function() {
+        try {
+            if (address.value.length == 0) {
+                addressError.textContent = "";
+                return;
+            }
+            console.log(address.value);
+            (new AddressBook()).address = address.value;
+            addressError.textContent = "";
+        } catch (e) {
+            addressError.textContent = e;
+        }
+    });
+
+    const zipcode = document.querySelector('#zipcode');
+    const zipError = document.querySelector('.zip-error');
+    zipcode.addEventListener('input', function() {
+        try {
+            if (zipcode.value.length == 0) {
+                zipError.textContent = "";
+                return;
+            }
+            console.log(zipcode.value);
+            (new AddressBook()).zipcode = zipcode.value;
+            zipError.textContent = "";
+        } catch (e) {
+            zipError.textContent = e;
+        }
+    });
+
+    const state = document.querySelector('#state');
+    const stateError = document.querySelector('.state-error');
+    state.addEventListener('input', function() {
+        try {
+            if (state.value.length == 0) {
+                stateError.textContent = "";
+                return;
+            }
+            console.log(state.value);
+            (new AddressBook()).state = state.value;
+            stateError.textContent = "";
+        } catch (e) {
+            stateError.textContent = e;
+        }
+    });
+
+    const phone = document.querySelector('#phone');
+    const phoneError = document.querySelector('.phone-error');
+    phone.addEventListener('input', function() {
+        try {
+            if (phone.value.length == 0) {
+                phoneError.textContent = "";
+                return;
+            }
+            console.log(phone.value);
+            (new AddressBook()).phone = phone.value;
+            phoneError.textContent = "";
+        } catch (e) {
+            phoneError.textContent = e;
+        }
+    });
+
 });
 
 const save = (event) => {

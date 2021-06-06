@@ -1,5 +1,40 @@
 let loginObject = {};
 let responseData = {};
+window.addEventListener('DOMContentLoaded', (event) => {
+    //event.preventDefault();
+    const email = document.querySelector('#email');
+    const emailError = document.querySelector('.text-error');
+    email.addEventListener('input', function() {
+        try {
+            if (email.value.length == 0) {
+                emailError.textContent = "";
+                return;
+            }
+
+            console.log(email.value);
+            (new AddressBook()).email = email.value;
+            emailError.textContent = "";
+        } catch (e) {
+            emailError.textContent = e;
+        }
+    });
+
+    const password = document.querySelector('#password');
+    const passwordError = document.querySelector('.password-error');
+    password.addEventListener('input', function() {
+        try {
+            if (password.value.length == 0) {
+                passwordError.textContent = "";
+                return;
+            }
+            console.log(password.value);
+            (new AddressBook()).password = password.value;
+            passwordError.textContent = "";
+        } catch (e) {
+            passwordError.textContent = e;
+        }
+    });
+});
 const login = (event) => {
     event.preventDefault();
     event.stopPropagation();
