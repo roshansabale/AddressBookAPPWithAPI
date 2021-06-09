@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost:27017/addressbook', {
         console.log("Database connected Successfully!!");
     })
     .catch(e => {
-        console.log("Not connected to the database", err);
+        console.log("Not connected to the database", e);
         process.exit();
     });
 

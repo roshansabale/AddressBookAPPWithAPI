@@ -2,8 +2,12 @@ let listOfPersons = {};
 let personObject = {};
 let personsList = {};
 let personid;
+function preventBack() { window.history.forward(); }  
 window.addEventListener('DOMContentLoaded', (event) => {
     getAllPersons();
+    
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
 });
 
 const addPerson = (event) => {
@@ -19,7 +23,7 @@ const addPerson = (event) => {
     personObject.userId = getuserIDFromStorage();
     registerPerson();
     alert(personObject);
-    window.location.replace(siteProperties.dashboard_Page);
+   window.location.replace(siteProperties.dashboard_Page);
 }
 
 const editPerson = (event) => {
@@ -176,4 +180,13 @@ const deletePerson = (id) => {
         .catch(error => {
             throw error;
         });
+}
+
+const logout = (event) => {
+    localStorage.clear();
+    function preventBack() { window.history.forward(); }  
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+    window.location.replace(siteProperties.login_Page);
+
 }

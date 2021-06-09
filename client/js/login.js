@@ -1,7 +1,13 @@
 let loginObject = {};
 let responseData = {};
+
+function preventBack() { window.history.forward(); }  
+
 window.addEventListener('DOMContentLoaded', (event) => {
-    //event.preventDefault();
+
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+    // event.preventDefault();
     const email = document.querySelector('#email');
     const emailError = document.querySelector('.text-error');
     email.addEventListener('input', function() {
@@ -46,7 +52,7 @@ const login = (event) => {
 const makeLogin = () => {
     let url = siteProperties.login_URL;
     let methodCall = "POST";
-    console.log("LoginObject from call" + loginObject);
+    console.log("LoginObject from call",loginObject);
     makeServiceCall(methodCall, url, true, loginObject)
         .then((responseText) => {
             responseData = responseText;
@@ -60,6 +66,7 @@ const makeLogin = () => {
             window.location.replace(siteProperties.dashboard_Page);
         })
         .catch((error) => {
+            console.log("Error",error);
             throw error;
         })
 }

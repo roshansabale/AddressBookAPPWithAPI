@@ -1,11 +1,13 @@
 let userDetails;
 
-function makeServiceCall(methodType, url, async, data = null) {
+function makeServiceCall(methodType, url, async, data =null) {
     console.log("Data Is:" + data);
     return new Promise(function(resolve, reject) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
-            if (xhr.readyState >= 0 || xhr.status == 200) {
+            console.log("XHR:",xhr);
+           if (xhr.readyState >= 0 || xhr.status === 200) {
+               
                 if (xhr.status === 200 || xhr.status === 201) {
                     let abc = JSON.stringify(xhr.responseText);
                     setTimeout(() => {
@@ -17,7 +19,7 @@ function makeServiceCall(methodType, url, async, data = null) {
                         statusText: xhr.statusText
                     });
                 }
-            }
+           }
         }
         xhr.onerror = function() {
             reject({
@@ -28,13 +30,16 @@ function makeServiceCall(methodType, url, async, data = null) {
 
         xhr.open(methodType, url, async);
         if (data != null) {
+            if( localStorage.getItem('ResponseData') != null) {
             let token = getuserTokenFromStorage();
-            xhr.setRequestHeader("Content-Type", "application/json");
+            console.log("Token"+token);
             xhr.setRequestHeader('token', token);
+            }
+            xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(JSON.stringify(data));
             console.log("From if condition" + JSON.stringify(data));
         } else {
-            // if (url == siteProperties.login_URL) {
+       
             let userId = getuserIDFromStorage();
             let token = getuserTokenFromStorage();
             xhr.setRequestHeader("Content-Type", "application/json");
@@ -86,6 +91,7 @@ const getuserIDFromStorage = () => {
 
 const getuserTokenFromStorage = () => {
     userDetails = localStorage.getItem('ResponseData');
+    console.log("UserDetails",userDetails);
     let usertoken = JSON.parse(userDetails).response.token;
     console.log("User id from local storage method" + usertoken);
     return usertoken;
