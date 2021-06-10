@@ -133,13 +133,13 @@ const myFunction = (data) => {
     console.log("Persons Data from myd=fucntion:" + JSON.stringify(personsList.data));
 
 
-    let bigCities = persons.find(function(e) {
+    let findedPerson = persons.find(function(e) {
         return e._id == data.id;
     });
 
-    console.log("UpdatedData from myfucntion" + "Finded person" + JSON.stringify(bigCities));
-    setForm(bigCities);
-    getSelectedPersonId(bigCities);
+    console.log("UpdatedData from myfucntion" + "Finded person" + JSON.stringify(findedPerson));
+    setForm(findedPerson);
+    getSelectedPersonId(findedPerson);
 }
 
 const setForm = (data) => {
